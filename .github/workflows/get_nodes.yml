@@ -13,7 +13,7 @@ jobs:
             - name: Deploy the kube app
               run: |
                 argocd app create vote-kodu \
-                  --repo https://github.com/rjain997/k8s/
+                  --repo https://github.com/rjain997/k8s
                   --path k8s-specifications \
                   --dest-server https://kubernetes.default.svc \
                   --dest-namespace voting \
