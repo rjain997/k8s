@@ -43,7 +43,7 @@ jobs:
         steps:
             - name: Deploy the kube app
               run: |
-                argocd app create my-app \
+                argocd app create vote-kodu \
                   --repo https://github.com/rithikjain24/k8s-kind-voting-app\
                   --path k8s-specifications \
                   --dest-server https://kubernetes.default.svc \
