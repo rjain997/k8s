@@ -4,42 +4,10 @@ on:
     push:
     workflow_dispatch:    
 
-jobs:
-    get_nodes:
-        runs-on: self-hosted
-        steps:
-            #(Required for non-self hosted runners)
-            # - name: Install kubectl etc
-            #   run: |
-            #    #!/bin/bash
-            #    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-            #    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
-            #    echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
-            #    sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-            #    kubectl version --client
-
-            # - name: Create kubeconfig file
-            #   run: echo "${{ secrets.KUBE_CONFIG }}" > $HOME/.kube/config (Required for non-self hosted runners)
-   
-            - name: Get Kubernetes Nodes
-              #run: kubectl get nodes --kubeconfig $HOME/.kube/config (Required for non-self hosted runners)
-              run: kubectl get nodes
-    get_ns:
-        runs-on: self-hosted
-        #needs: get_nodes
-        steps:
-            - name: Kubectl Get Namespaces
-              run: kubectl get ns  
+jobs:  
           
-    get_all:
-        runs-on: self-hosted
-        #needs: get_ns
-        steps:
-            - name: Kubectl Get Namespaces
-              run: kubectl get all -n voting
     deploy_using_argo:
         runs-on: self-hosted
-        #needs: [get_ns, get_nodes , get_all ]
         steps:
             - name: Deploy the kube app
               run: |
