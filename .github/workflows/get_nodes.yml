@@ -4,7 +4,6 @@ on:
     push:
     #workflow_dispatch:
             
-
 jobs:  
           
     deploy_using_argo:
