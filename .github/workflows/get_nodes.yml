@@ -1,6 +1,8 @@
 name: Kubectl get nodes
 
-on: push
+on: 
+    push:
+    workflow_dispatch:    
 
 jobs:
     get_nodes:
