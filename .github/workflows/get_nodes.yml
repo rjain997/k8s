@@ -2,7 +2,7 @@ name: Kubectl get nodes
 
 on: 
     push:
-    workflow_dispatch:
+    #workflow_dispatch:
             
 
 jobs:  
@@ -13,7 +13,7 @@ jobs:
             - name: Deploy the kube app
               run: |
                 argocd app create vote-kodu \
-                  --repo https://github.com/rithikjain24/k8s-kind-voting-app\
+                  --repo https://github.com/rjain997/k8s/
                   --path k8s-specifications \
                   --dest-server https://kubernetes.default.svc \
                   --dest-namespace voting \
