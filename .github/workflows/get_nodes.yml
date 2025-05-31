@@ -22,6 +22,6 @@ jobs:
             - name: Get Kubernetes Nodes
               #run: kubectl get nodes --kubeconfig $HOME/.kube/config
               run: | 
-              kubectl get nodes
-              kubectl get ns
-              kubectl get all
+                kubectl get nodes
+                kubectl get ns
+                kubectl get all
