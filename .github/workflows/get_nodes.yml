@@ -26,26 +26,26 @@ jobs:
               run: kubectl get nodes
     get_ns:
         runs-on: self-hosted
-        needs: get_nodes
+        #needs: get_nodes
         steps:
             - name: Kubectl Get Namespaces
               run: kubectl get ns  
           
     get_all:
         runs-on: self-hosted
-        needs: get_ns
+        #needs: get_ns
         steps:
             - name: Kubectl Get Namespaces
               run: kubectl get all -n voting
     deploy_using_argo:
         runs-on: self-hosted
-        needs: [get_ns, get_nodes , get_all ]
+        #needs: [get_ns, get_nodes , get_all ]
         steps:
             - name: Deploy the kube app
               run: |
                 argocd app create my-app \
-                --repo https://github.com/rithikjain24/k8s-kind-voting-app\
-                --path k8s-specifications \
-                --dest-server https://kubernetes.default.svc \
-                --dest-namespace voting \
-                --sync-policy automated                    
+                  --repo https://github.com/rithikjain24/k8s-kind-voting-app\
+                  --path k8s-specifications \
+                  --dest-server https://kubernetes.default.svc \
+                  --dest-namespace voting \
+                  --sync-policy automated                    
