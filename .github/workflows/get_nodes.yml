@@ -12,6 +12,7 @@ jobs:
         steps:
             - name: Deploy the kube app
               run: |
+                argocd cluster list
                 argocd app create vote-kodu \
                   --repo https://github.com/rjain997/k8s
                   --path k8s-specifications \
