@@ -29,4 +29,11 @@ jobs:
         needs: get_nodes
         steps:
             - name: Kubectl Get Namespaces
-              run: kubectl get ns        
+              run: kubectl get ns  
+          
+    get_all:
+        runs-on: self-hosted
+        needs: get_nodes
+        steps:
+            - name: Kubectl Get Namespaces
+              run: kubectl get all -n voting         
